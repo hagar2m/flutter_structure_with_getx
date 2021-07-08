@@ -20,9 +20,7 @@ class LoginScreen extends StatelessWidget {
 
   Future<void> validateAndSubmit() async {
     if (validateAndSave()) {
-      authController.signIn(
-          mail: authController.emailController.text,
-          pass: authController.passwordController.text);
+      authController.signIn();
     }
   }
 

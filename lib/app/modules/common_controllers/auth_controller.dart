@@ -17,9 +17,9 @@ class AuthController extends GetxController {
     super.onClose();
   }
 
-  signIn({required String mail, required String pass}) async {
-    debugPrint("Sign in - email: $mail - pass: $pass");
-    userId = await authRepo.signInWithEmailAndPassword(mail, pass);
+  signIn() async {
+    debugPrint("Sign in - email: ${emailController.text} - pass: ${passwordController.text}");
+    userId = await authRepo.signInWithEmailAndPassword(emailController.text, passwordController.text);
     Get.to(HomeScreen());
   }
 }

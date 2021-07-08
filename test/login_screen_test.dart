@@ -19,14 +19,14 @@ void main() {
     ));
 
     Finder emailField = find.byKey(Key('email'));
-    await tester.enterText(emailField, 'email@test.com');
+    await tester.enterText(emailField, 'email666@test.com');
 
     Finder passwordField = find.byKey(Key('password'));
     await tester.enterText(passwordField, 'password');
 
     await tester.tap(find.byKey(Key('signIn')));
 
-    when(mockAuth.signIn(mail: "email@test.com", pass: "password"))
+    when(mockAuth.signIn())
         .thenAnswer((_) async {
       await Future.delayed(Duration.zero);
     });
