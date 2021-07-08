@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_structure_with_getx/app/data/repositories/auth_repository.dart';
 import 'package:flutter_structure_with_getx/app/modules/home/home_screen.dart';
 import 'package:get/get.dart';
+
 class AuthController extends GetxController {
   static AuthController to = Get.find();
   TextEditingController emailController = TextEditingController();
@@ -16,13 +17,9 @@ class AuthController extends GetxController {
     super.onClose();
   }
 
-  signIn() async {
-    debugPrint("Sign in - email: ${emailController.text} - pass: ${passwordController.text}");
-    userId = await authRepo.signInWithEmailAndPassword(emailController.text, passwordController.text);
+  signIn({required String mail, required String pass}) async {
+    debugPrint("Sign in - email: $mail - pass: $pass");
+    userId = await authRepo.signInWithEmailAndPassword(mail, pass);
     Get.to(HomeScreen());
-    // if(userId.isNotEmpty)
   }
-
-
-
 }

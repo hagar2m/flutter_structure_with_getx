@@ -7,7 +7,7 @@ class LoginScreen extends StatelessWidget {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   final AuthController authController = Get.put(AuthController());
-      //AuthController.to;
+  //AuthController.to;
 
   bool validateAndSave() {
     final FormState form = formKey.currentState!;
@@ -20,7 +20,9 @@ class LoginScreen extends StatelessWidget {
 
   Future<void> validateAndSubmit() async {
     if (validateAndSave()) {
-      authController.signIn();
+      authController.signIn(
+          mail: authController.emailController.text,
+          pass: authController.passwordController.text);
     }
   }
 
@@ -35,30 +37,29 @@ class LoginScreen extends StatelessWidget {
         child: Form(
           key: formKey,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              TextFormField(
-                key: Key('email'),
-                controller: authController.emailController,
-                decoration: InputDecoration(labelText: 'Email'),
-                validator: AppValidator().email,
-              ),
-              TextFormField(
-                key: Key('password'),
-                controller: authController.passwordController,
-                decoration: InputDecoration(labelText: 'Password'),
-                obscureText: true,
-                validator: AppValidator().password,
-              ),
-              /// SubmitButton ///
-              _buildSubmitButton(),
-            ]
-          ),
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                TextFormField(
+                  key: Key('email'),
+                  controller: authController.emailController,
+                  decoration: InputDecoration(labelText: 'Email'),
+                  validator: AppValidator().email,
+                ),
+                TextFormField(
+                  key: Key('password'),
+                  controller: authController.passwordController,
+                  decoration: InputDecoration(labelText: 'Password'),
+                  obscureText: true,
+                  validator: AppValidator().password,
+                ),
+
+                /// SubmitButton ///
+                _buildSubmitButton(),
+              ]),
         ),
       ),
     );
   }
-
 
   Widget _buildSubmitButton() {
     return ElevatedButton(
