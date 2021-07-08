@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../common_controllers/auth_controller.dart';
 import '../../data/app_validator.dart';
 
 class LoginScreen extends StatelessWidget {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  final AuthController authController = AuthController.to;
+
+  final AuthController authController = Get.put(AuthController());
+      //AuthController.to;
 
   bool validateAndSave() {
     final FormState form = formKey.currentState!;

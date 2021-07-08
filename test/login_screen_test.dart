@@ -9,8 +9,6 @@ class MockAuth extends Mock implements BaseAuth {
 
 }
 
-
-
 void main() {
   Widget makeTestableWidget({ required Widget child }){
     return MaterialApp(
