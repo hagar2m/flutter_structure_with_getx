@@ -1,28 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../common_controllers/auth_controller.dart';
+import 'login_controller.dart';
 import '../../data/app_validator.dart';
 
 class LoginScreen extends StatelessWidget {
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
-  final AuthController authController = Get.put(AuthController());
-  //AuthController.to;
-
-  bool validateAndSave() {
-    final FormState form = formKey.currentState!;
-    if (form.validate()) {
-      form.save();
-      return true;
-    }
-    return false;
-  }
-
-  Future<void> validateAndSubmit() async {
-    if (validateAndSave()) {
-      authController.signIn();
-    }
-  }
+  final LoginController authController = Get.find<LoginController>();
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +15,7 @@ class LoginScreen extends StatelessWidget {
       body: Container(
         padding: EdgeInsets.all(16.0),
         child: Form(
-          key: formKey,
+          key: authController.formKey,
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
@@ -63,7 +45,7 @@ class LoginScreen extends StatelessWidget {
     return ElevatedButton(
       key: Key('signIn'),
       child: Text('Login', style: TextStyle(fontSize: 20.0)),
-      onPressed: validateAndSubmit,
+      onPressed: authController.signIn,
     );
   }
 }

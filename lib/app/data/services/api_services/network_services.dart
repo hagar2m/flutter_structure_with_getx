@@ -4,7 +4,7 @@
 //
 // const baseUrl = 'https://jsonplaceholder.typicode.com/posts/';
 //
-// class MyApiClient {
+// class NetworkServices {
 //
 //   final http.Client httpClient;
 //   MyApiClient({@required this.httpClient});

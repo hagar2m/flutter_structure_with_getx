@@ -1,6 +1,6 @@
-part of './app_pages.dart';
+// part of './app_screens.dart';
 
-abstract class Routes {
+abstract class AppRoutes {
   static const INITIAL = '/';
-  static const DETAILS = '/details';
+  static const LOGIN = '/login';
 }
